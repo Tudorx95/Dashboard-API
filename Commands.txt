@@ -1,0 +1,15 @@
+For the older version of ProSidebar
+npm i react-pro-sidebar@0.7.1
+
+For running 
+npm run start
+
+Documentations:
+
+https://mui.com/x/react-data-grid/
+
+npm i @fullcalendar/react @fullcalendar/interaction
+
+
+Commands for integration with server:
+
