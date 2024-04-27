@@ -11,5 +11,9 @@ https://mui.com/x/react-data-grid/
 npm i @fullcalendar/react @fullcalendar/interaction
 
 
-Commands for integration with server:
+Comanda instalare suita jwt: npm i jsonwebtoken 
+
+
+
+
 

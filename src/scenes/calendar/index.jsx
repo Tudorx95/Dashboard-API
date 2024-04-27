@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react"
 import { formatDate } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
 import {
     Box,
@@ -14,7 +15,6 @@ import {
 } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
-import { Interaction } from "@fullcalendar/core/internal";
 
 
 const Calendar = () => {
@@ -73,8 +73,8 @@ const Calendar = () => {
                                         })}
                                     </Typography>
                                 }
-                            >
-                            </ListItemText>
+                            />
+
                         </ListItem>
                     })}
                 </List>
@@ -87,13 +87,19 @@ const Calendar = () => {
                     plugins={[
                         dayGridPlugin,
                         timeGridPlugin,
-                        //here interactionPlugin may be deprecated
-                        Interaction,
+                        //imported 
+                        interactionPlugin,
                         listPlugin
                     ]}
+                    headerToolbar={{
+                        left: "prev,next today",
+                        center: "title",
+                        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth"
+                    }}
                     initialView="dayGridMonth"
                     editable={true}
                     selectable={true}
+                    selectMirror={true}
                     dayMaxEvents={true}
                     select={handleDateClick}
                     eventClick={handleEventClick}
@@ -106,7 +112,6 @@ const Calendar = () => {
                     ]}
                 />
             </Box>
-
         </Box>
     </Box>
 };
