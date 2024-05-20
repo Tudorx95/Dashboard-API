@@ -1,0 +1,174 @@
+<html>
+<head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="title" content="PizzaHut - Pizza Delicioasa ">
+        <title>PizzaHut - Pizza Delicioasa</title>
+        <meta name="description" content="pizza">
+
+        <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="./assets/css/style.css">
+
+        <style>
+            body {
+                background-image: url("./assets/images/hero-slider-3.jpg");
+                background-repeat: no-repeat;
+
+                background-size:cover;
+                height: 100vh;
+                overflow : auto;
+            }
+        </style>
+
+</head>
+
+<body>
+    <a href="/index.html" class="btn btn-secondary">
+        <span class="text text-1">Inapoi</span>
+
+        <span class="text text-2" aria-hidden="true">Inapoi</span>
+      </a>
+
+
+<section class="reservation">
+        <div class="container">
+
+            <div class="form reservation-form bg-black-10">
+
+                <form class="form-left" onSubmit="return handleSubmit(event)">
+
+                    <h2 class="headline-1 text-center">Rezervare Online</h2>
+
+                    <p>
+                        Rezervari la <a href="tel:074123321" class="link">0740 123 321</a> sau completati formularul:
+                    </p>
+
+
+                    <div class="input-wrapper">
+                        <input type="text" name="name" placeholder="Numele" autocomplete="off" class="input-field" required />
+
+                        <input type="tel" name="phone_number" placeholder="Numarul de telefon" autocomplete="off" class="input-field" required />
+                    </div>
+
+                    <div class="input-wrapper">
+
+                        <div class="icon-wrapper">
+                            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+                            <select name="num_of_persons" class="input-field">
+                                <option value="1">1 persoana</option>
+                                <option value="2">2 persoane</option>
+                                <option value="3">3 persoane</option>
+                                <option value="4">4 persoane</option>
+                                <option value="5">5 persoane</option>
+                                <option value="6">6 persoane</option>
+                                <option value="7">7 persoane</option>
+                            </select>
+
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+
+                        <div class="icon-wrapper">
+                            <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+
+                            <input type="date" name="reservation_date" class="input-field" required />
+
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+
+                        <div class="icon-wrapper">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+
+                        <select name="reservation_time" class="input-field">
+                                <option value="10:00:00">10:00</option>
+                                <option value="11:00:00">11:00</option>
+                                <option value="12:00:00">12:00</option>
+                                <option value="13:00:00">13:00</option>
+                                <option value="14:00:00">14:00</option>
+                                <option value="15:00:00">15:00</option>
+                                <option value="16:00:00">16:00</option>
+                                <option value="17:00:00">17:00</option>
+                                <option value="18:00:00">18:00</option>
+                                <option value="19:00:00">19:00</option>
+                                <option value="20:00:00">20:00</option>
+                                <option value="21:00:00">21:00</option>
+                                <option value="22:00:00">22:00</option>
+</select>
+
+                            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+                        </div>
+
+                    </div>
+
+                    <textarea name="message" placeholder="Mesaj" autocomplete="off" class="input-field"></textarea>
+
+                    <!--<input type="hidden" name="reservation_datetime" id="reservation_datetime"> -->
+                    <button type="submit" class="btn btn-secondary">
+    <span class="text text-1">Rezerva o masa</span>
+    <span class="text text-2" aria-hidden="true">Rezerva o masa</span>
+</button>
+
+        <!--            <script>
+                // function goToHomePage() {
+                //      window.location.href = "/index.html"; // Redirect to the home page
+                                         }
+        //const date = document.querySelector('input[name="reservation_date"]').value;
+        //const time = document.querySelector('select[name="reservation_time"]').value;
+        //const datetimeString = `${date} ${time}`;
+        //document.getElementById('reservation_datetime').value = datetimeString;
+                //              </script>   -->
+
+
+                </form>
+
+                <script src="Rezervation.js"></script>
+
+                <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
+
+                    <h2 class="headline-1 text-center">Contacteaza-ne</h2>
+
+                    <p class="contact-label">Evenimente</p>
+
+                    <a href="tel:+88123123456" class="body-1 contact-number hover-underline">0740 123 321</a>
+
+                    <div class="separator"></div>
+
+                    <p class="contact-label">Locatie</p>
+
+                    <address class="body-4">
+                        Calea Rahovei Nr 189 <br>
+                        Bucuresti
+                    </address>
+
+                    <p class="contact-label">Pranz</p>
+
+                    <p class="body-4">
+                        Luni pana Duminica<br>
+                        11:00 - 14:30
+                    </p>
+
+                    <p class="contact-label">Cina</p>
+
+                    <p class="body-4">
+                        Luni pana Duminica<br>
+                        17:00 - 22:00
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

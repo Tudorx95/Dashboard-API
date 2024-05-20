@@ -9,6 +9,7 @@ const Invoices = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
+
     //here is the ID attribute of the table elements
     // You can reffer to another elements by importing the right table  
     const columns = [

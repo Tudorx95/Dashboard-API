@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { ColorModeContext, tokens } from "../../theme";
+import { useNavigate } from "react-router-dom";
 import InputBase from "@mui/material/InputBase"; // Assuming MUI for InputBase
 import SearchIcon from "@mui/icons-material/Search"; // Assuming SearchIcon is imported
 
@@ -22,6 +23,7 @@ function SearchBar({ options, placeholder = "Search for panels" }) {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode); // Access theme colors
     const [anchorEl, setAnchorEl] = useState(null); // State for Popover or Menu
+    const navigate = useNavigate();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -33,14 +35,14 @@ function SearchBar({ options, placeholder = "Search for panels" }) {
 
     const handleOptionClick = (link) => {
         handleClose(); // Close the Popover/Menu after selection
-        window.location.href = link; // Redirect using window.location.href
+        navigate(link);//window.location.href = link; // Redirect using window.location.href
     };
 
     // Render the search bar itself here (same as your previous code)
 
     return (
         <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="3px">
-            <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
+            {/* <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" /> */}
             <IconButton type="button" sx={{ p: 1 }} onClick={handleClick}>
                 <SearchIcon />
             </IconButton>

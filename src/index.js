@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Redirect } from 'react-router-dom';
-import './index.css';
+//import './index.css';
 import LoginApp from './LoginApp';
 import { AuthProvider } from './context/AuthProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes,Route } from 'react-router-dom';
+import App from './App';
+import Login from './Login';
 
 
 const isDashboardPath = (pathname) => {

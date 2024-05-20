@@ -16,6 +16,7 @@ const client = new Client({
 
 app.use(bodyParser.json());
 
+
 app.use(express.static(__dirname));
 
 

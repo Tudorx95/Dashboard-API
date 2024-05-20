@@ -7,10 +7,33 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import { useState } from "react";
+import OptionsPopup from "./popup";
 
 const Team = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const [isEditing, setIsEditing] = useState(false);
+    const handleBoxClick = () => {
+        setIsEditing(true);
+    }
+
+    const handleSaveChanges = () => {
+        setIsEditing(false);
+    };
+
+    const handleOpenPopup = (user) => {
+        setIsPopupOpen(true);
+        setSelectedUser(user); // Pass user access level to OptionsPopup
+    };
+
+    const handleClosePopup = (newAccess) => {
+        // Update user access level in your data (if applicable)
+        setIsPopupOpen(false);
+    };
 
     //here is the ID attribute of the table elements
     // You can reffer to another elements by importing the right table  
@@ -55,26 +78,35 @@ const Team = () => {
             flex: 1,
             renderCell: ({ row: { access } }) => {
                 return (
-                    <Box
-                        width="60%"
-                        m="0 auto"  //margins top-bottom left-right
-                        p="5px"
-                        display="flex"
-                        justifyContent="center"
-                        backgroundColor={
-                            access === "admin"
-                                ? colors.greenAccent[600]
-                                : colors.greenAccent[700]
+                    <div>
+                        <Box
+                            width="100%"
+                            m="0 auto"  //margins top-bottom left-right
+                            p="5px"
+                            display="flex"
+                            justifyContent="center"
+                            backgroundColor={
+                                access === "admin"
+                                    ? colors.greenAccent[600]
+                                    : colors.greenAccent[700]
+                            }
+                            borderRadius="4px"
+                            onClick={handleBoxClick}
+                        >
+                            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
+                            {access === "manager" && <SecurityOutlinedIcon />}
+                            {access === "user" && <LockOpenOutlinedIcon />}
+                            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+                                {access}
+                            </Typography>
+                        </Box>
+                        {isEditing &&
+                            <OptionsPopup
+                                onClose={handleClosePopup}
+                                initialAccess={selectedUser?.access} // Access level from selected user
+                            />
                         }
-                        borderRadius="4px"
-                    >
-                        {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-                        {access === "manager" && <SecurityOutlinedIcon />}
-                        {access === "user" && <LockOpenOutlinedIcon />}
-                        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {access}
-                        </Typography>
-                    </Box>
+                    </div>
                 )                                   //ml=margin left
             }
         }

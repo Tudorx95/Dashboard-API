@@ -25,15 +25,12 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes>
-          <Route path="/login" element={<Login />} /> 
-        </Routes>
         <div className="app">
           <Sidebar isSidebar={isSidebar} />
           <main className="content">
              <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />

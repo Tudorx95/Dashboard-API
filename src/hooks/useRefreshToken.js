@@ -6,7 +6,7 @@ const useRefreshToken = () => {
 
     const refresh = async () => {
         const response = await axios.get('/refresh', {
-            withCredentials: true
+            withCredentials: true           // setting that allow us to send cookies without request
         });
         setAuth(prev => {
             console.log(JSON.stringify(prev));

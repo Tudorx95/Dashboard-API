@@ -19,6 +19,9 @@ import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import { AuthProvider } from "../../context/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -43,10 +46,11 @@ const Sidebar = () => {
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
+    const { auth } = useAuth();
 
     return (
         //setting up the styling 
-        <Box sx={{
+        <Box display="flex" justifyContent="left" sx={{
             "& .pro-sidebar-inner": {
                 background: `${colors.primary[400]} !important`
             },
@@ -64,7 +68,7 @@ const Sidebar = () => {
             }
         }}>
 
-            <ProSidebar collapsed={!isCollapsed} collapsedWidth="100px">
+            <ProSidebar collapsed={!isCollapsed} collapsedWidth="100px" display="flex">
                 <Menu iconShape="square">
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
@@ -104,7 +108,9 @@ const Sidebar = () => {
                                 />
                             </Box>
                             <Box textAlign="center">
-                                <Typography variant="h5" color={colors.grey[100]} fontWeight="bold" sx={{ mx: "10px 0 0 0" }}>Tudor Lepadatu</Typography>
+                                <Typography variant="h5" color={colors.grey[100]} fontWeight="bold" sx={{ mx: "10px 0 0 0" }}>
+                                    {auth?.user ? auth.user.name : 'Loading...'}
+                                </Typography>
                                 <Typography variant="h5" color={colors.greenAccent[500]}>ATM admin</Typography>
                             </Box>
                         </Box>
@@ -114,7 +120,7 @@ const Sidebar = () => {
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                         <Item
                             title="Dashboard"
-                            to="/"
+                            to="/dashboard"
                             icon={<HomeOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -209,6 +215,13 @@ const Sidebar = () => {
                             title="Geography Chart"
                             to="/geography"
                             icon={<MapOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        <Item
+                            title="Log Out"
+                            to="/login"
+                            icon={<AssignmentIndIcon />}
                             selected={selected}
                             setSelected={setSelected}
                         />
